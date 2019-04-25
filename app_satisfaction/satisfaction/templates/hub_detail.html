@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>{{ feedback.submitter|capfirst }}</h3>
+    <p>Email: {{ feedback.email }}</p>
+    <p>Score: {{ feedback.score }}</p>
+    <p class="hidden">Comment: {{ feedback.comment }}</p>
+{% endblock %}
