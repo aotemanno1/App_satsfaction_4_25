@@ -6,8 +6,6 @@ from satisfaction.models import Feedback, Fruit
 
 import pandas as pd
 
-
-
 ALREADY_LOADED_ERROR_MESSAGE = """
 ----->>manage.py migrate --run-syncdb<<-----stupid command
 If you need to reload the app data from the CSV file,
@@ -21,14 +19,15 @@ class Command(BaseCommand):
     help = "Loads data from app_data.csv into our Feedback model"
 
     def handle(self, *args, **options):
+        # os.system("del db.sqlite3")
         if Feedback.objects.exists():
             print('Data already loaded...exiting.')
             print(ALREADY_LOADED_ERROR_MESSAGE)
             return
 
         # for row in DictReader(open('C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv')):
-        # path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
-        path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
+        path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
+        # path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
         data = pd.read_csv(path_to_file, encoding='utf-8')
         data = data.fillna(-1)
         col = ['First L. Name', 'Email Address', 'Hub Satisfaction', 'Hub Comments',
@@ -36,14 +35,17 @@ class Command(BaseCommand):
                     'Contacts Comments', 'Tasks Satisfaction', 'Tasks Comments',
                     'Notes Satisfaction', 'Notes Comments']
 
-        for row in data['Email Address']:
-            feedback = Feedback()
-            feedback.email = row
-            feedback.save()
         for row in data['First L. Name']:
             feedback = Feedback()
             feedback.submitter = row
             feedback.save()
+        print('name finished')
+
+        # for row in data['Email Address']:
+        #     feedback = Feedback()
+        #     feedback.email = row
+        #     feedback.save()
+        # print('email finished')
 
         # count = 0
         # for each_col in col:
