@@ -26,19 +26,32 @@ class Command(BaseCommand):
             return
 
         # for row in DictReader(open('C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv')):
-        path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
-        # path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
-        data = pd.read_csv(path_to_file, encoding='utf-8')
+        # path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
+        path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
+        data = pd.read_csv(path_to_file)
         data = data.fillna(-1)
+        name = data['First L. Name']
         col = ['First L. Name', 'Email Address', 'Hub Satisfaction', 'Hub Comments',
                     'Calendar Satisfaction', 'Calendar Comments', 'Contacts Satisfaction',
                     'Contacts Comments', 'Tasks Satisfaction', 'Tasks Comments',
                     'Notes Satisfaction', 'Notes Comments']
 
-        for row in data['First L. Name']:
+        for i in range(0, name.size):
             feedback = Feedback()
-            feedback.submitter = row
+            feedback.submitter = data['First L. Name'][i]
+            feedback.email = data['Email Address'][i]
+            feedback.score_hub = data['Hub Satisfaction'][i]
+            feedback.comment_hub = data['Hub Comments'][i]
+            feedback.score_calendar = data['Calendar Satisfaction'][i]
+            feedback.comment_calendar = data['Calendar Comments'][i]
+            feedback.score_contacts = data['Contacts Satisfaction'][i]
+            feedback.comment_contacts = data['Contacts Comments'][i]
+            feedback.score_tasks = data['Tasks Satisfaction'][i]
+            feedback.comment_tasks = data['Tasks Comments'][i]
+            feedback.score_notes = data['Notes Satisfaction'][i]
+            feedback.comment_notes = data['Notes Comments'][i]
             feedback.save()
+
         print('name finished')
 
         # for row in data['Email Address']:
