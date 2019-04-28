@@ -41,7 +41,7 @@ class ScorePieChart():
         self.chart = pygal.Pie(**kwargs)
         self.chart.title = 'Score Distribution'
 
-    def get_data(self):
+    def get_data(self, app):
         conn = sqlite3.connect('db.sqlite3')
         c = conn.cursor()
         c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_hub <= 5''')
