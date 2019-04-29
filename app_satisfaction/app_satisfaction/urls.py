@@ -29,6 +29,12 @@ urlpatterns = [
     url(r'^hub_score_0_5', views.hub_score_0_5, name='hub_score_0_5'),
     url(r'^hub_score_6_8', views.hub_score_6_8, name='hub_score_6_8'),
     url(r'^hub_score_9_10', views.hub_score_9_10, name='hub_score_9_10'),
+
+    url(r'^calendar_list/', views.calendar_list, name='calendar_list'),
+    url(r'^calendar_score_0_5', views.calendar_score_0_5, name='calendar_score_0_5'),
+    url(r'^calendar_score_6_8', views.calendar_score_6_8, name='calendar_score_6_8'),
+    url(r'^calendar_score_9_10', views.calendar_score_9_10, name='calendar_score_9_10'),
+
     url(r'^fruit', views.fruit, name='fruit'),
     url(r'^test', views.test, name='test'),
 

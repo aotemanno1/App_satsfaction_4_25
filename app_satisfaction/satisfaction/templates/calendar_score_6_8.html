@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for feedback in feedbacks %}
+    {% if feedback.score_calendar >= 6 and feedback.score_calendar <= 8 %}
+            <p>{{ feedback.comment_calendar }}</p>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}

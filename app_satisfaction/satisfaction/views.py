@@ -20,19 +20,31 @@ def hub_list(request):
         explicit_size=True,
         style=DarkStyle
     )
-    cht_score = cht_score.generate()
+    cht_score_hub = cht_score.generate("hub")
     cht_score_calendar = cht_score
-    cht_score_contacts = cht_score
-    cht_score_tasks = cht_score
-    cht_score_notes = cht_score
+    # cht_score_contacts = cht_score
+    # cht_score_tasks = cht_score
+    # cht_score_notes = cht_score
     dict_score = {'feedbacks': feedbacks,
-                  'cht_score_hub': cht_score,
-                  'cht_score_calendar': cht_score_calendar,
-                  'cht_score_contacts': cht_score_contacts,
-                  'cht_score_tasks': cht_score_tasks,
-                  'cht_score_notes': cht_score_notes,
+                  'cht_score_hub': cht_score_hub,
+                  # 'cht_score_calendar': cht_score_calendar,
+                  # 'cht_score_contacts': cht_score_contacts,
+                  # 'cht_score_tasks': cht_score_tasks,
+                  # 'cht_score_notes': cht_score_notes,
                   }
     return render(request, 'hub_list.html', dict_score)
+
+
+def calendar_list(request):
+    cht_score = ScorePieChart(
+        height=600,
+        width=800,
+        explicit_size=True,
+        style=DarkStyle
+    )
+    cht_score_calendar = cht_score.generate("calendar")
+    dict_score = {'cht_score_calendar': cht_score_calendar}
+    return render(request, 'calendar_list.html', dict_score)
 
 
 def hub_detail(request, id):
@@ -53,6 +65,21 @@ def hub_score_6_8(request):
 def hub_score_9_10(request):
     feedbacks = Feedback.objects.all()
     return render(request, 'hub_score_9_10.html', {'feedbacks': feedbacks})
+
+
+def calendar_score_0_5(request):
+    feedbacks = Feedback.objects.all()
+    return render(request, 'calendar_score_0_5.html', {'feedbacks': feedbacks})
+
+
+def calendar_score_6_8(request):
+    feedbacks = Feedback.objects.all()
+    return render(request, 'calendar_score_6_8.html', {'feedbacks': feedbacks})
+
+
+def calendar_score_9_10(request):
+    feedbacks = Feedback.objects.all()
+    return render(request, 'calendar_score_9_10.html', {'feedbacks': feedbacks})
 
 
 def fruit(request):

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <a href="{% url 'calendar_score_0_5' %}">score 0~5</a>
+</div>
+
+<div>
+    <a href="{% url 'calendar_score_6_8' %}">score 6~8</a>
+</div>
+
+<div>
+    <a href="{% url 'calendar_score_9_10' %}">score 9~10</a>
+</div>
+
+
+<body>
+    <!--{{ cht_score_hub|safe }}-->
+    {{ cht_score_calendar|safe }}
+    <!--{{ cht_score_contacts|safe }}-->
+    <!--{{ cht_score_tasks|safe }}-->
+    <!--{{ cht_score_notes|safe }}-->
+</body>
+
+{% endblock %}
+
+
