@@ -44,17 +44,21 @@ class ScorePieChart():
     def get_data(self, app):
         conn = sqlite3.connect('db.sqlite3')
         c = conn.cursor()
-        c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s <= 5 AND score_%s >= 0''' % (app,app))
+        c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s <= 5 AND score_%s >= 0''' % (app, app))
         low = c.fetchall()[0][0]
-        c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s >= 6 AND score_%s <= 7''' % (app,app))
+        c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s >= 6 AND score_%s <= 7''' % (app, app))
         mid = c.fetchall()[0][0]
         c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s >= 8''' % app)
         high = c.fetchall()[0][0]
+        c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s == -1''' % app)
+        others = c.fetchall()[0][0]
+
 
         data = {}
         data['0~5'] = int(low)
         data['6~7'] = int(mid)
         data['8~10'] = int(high)
+        data['others'] = int(others)
         return data
 
     def generate(self, app):

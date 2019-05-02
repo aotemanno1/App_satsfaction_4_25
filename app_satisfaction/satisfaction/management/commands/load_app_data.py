@@ -30,10 +30,6 @@ class Command(BaseCommand):
         # path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
         data = pd.read_csv(path_to_file)
         name = data['First L. Name']
-        col = ['First L. Name', 'Email Address', 'Hub Satisfaction', 'Hub Comments',
-                    'Calendar Satisfaction', 'Calendar Comments', 'Contacts Satisfaction',
-                    'Contacts Comments', 'Tasks Satisfaction', 'Tasks Comments',
-                    'Notes Satisfaction', 'Notes Comments']
 
         score_list = ['Hub Satisfaction', 'Calendar Satisfaction',
                       'Contacts Satisfaction', 'Tasks Satisfaction', 'Notes Satisfaction']

@@ -20,19 +20,11 @@ def hub_list(request):
         explicit_size=True,
         style=DarkStyle
     )
-    cht_score_hub = cht_score.generate("hub")
-    cht_score_calendar = cht_score
-    # cht_score_contacts = cht_score
-    # cht_score_tasks = cht_score
-    # cht_score_notes = cht_score
-    dict_score = {'feedbacks': feedbacks,
-                  'cht_score_hub': cht_score_hub,
-                  # 'cht_score_calendar': cht_score_calendar,
-                  # 'cht_score_contacts': cht_score_contacts,
-                  # 'cht_score_tasks': cht_score_tasks,
-                  # 'cht_score_notes': cht_score_notes,
-                  }
+    cht_score_hub = cht_score.generate('''hub''')
+
+    dict_score = {'cht_score_hub': cht_score_hub}
     return render(request, 'hub_list.html', dict_score)
+    # return render(request, 'hub_list.html')
 
 
 def calendar_list(request):
@@ -42,9 +34,10 @@ def calendar_list(request):
         explicit_size=True,
         style=DarkStyle
     )
-    cht_score_calendar = cht_score.generate("calendar")
+    cht_score_calendar = cht_score.generate('''calendar''')
     dict_score = {'cht_score_calendar': cht_score_calendar}
     return render(request, 'calendar_list.html', dict_score)
+    # return render(request, 'calendar_list.html')
 
 
 def hub_detail(request, id):
