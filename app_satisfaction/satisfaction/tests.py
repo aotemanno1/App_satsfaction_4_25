@@ -15,15 +15,9 @@ from csv import DictReader
 
 import numpy
 import pandas as pd
-# path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
-path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
+path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
+# path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
 data = pd.read_csv(path_to_file, encoding='utf-8')
-test = data['Hub Satisfaction'].fillna(-1)
-# name = data['First L. Name']
-# i = 1
-# for row in name:
-#     print(row)
-    # print(i)
-    # i += 1
-    # break
+# data['Notes Satisfaction'].replace(float('NaN'), -1, inplace=True)
+print(data['Notes Satisfaction'])
 

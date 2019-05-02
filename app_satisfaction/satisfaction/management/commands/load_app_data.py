@@ -26,54 +26,41 @@ class Command(BaseCommand):
             return
 
         # for row in DictReader(open('C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv')):
-        # path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
-        path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
+        path_to_file = "C:\\Users\\wenjli\\Desktop\\Apps2Beta1.csv"
+        # path_to_file = "C:\\python37\\Scripts\\myScripts\\Beta_Feedback\\Apps2Beta1.csv"
         data = pd.read_csv(path_to_file)
-        data = data.fillna(-1)
         name = data['First L. Name']
         col = ['First L. Name', 'Email Address', 'Hub Satisfaction', 'Hub Comments',
                     'Calendar Satisfaction', 'Calendar Comments', 'Contacts Satisfaction',
                     'Contacts Comments', 'Tasks Satisfaction', 'Tasks Comments',
                     'Notes Satisfaction', 'Notes Comments']
 
-        for i in range(0, name.size):
+        score_list = ['Hub Satisfaction', 'Calendar Satisfaction',
+                      'Contacts Satisfaction', 'Tasks Satisfaction', 'Notes Satisfaction']
+        for app in score_list:
+            data[app].replace(float('NaN'), -1, inplace=True)
+
+        comment_list = ['Hub Comments', 'Calendar Comments', 'Contacts Comments', 'Tasks Comments', 'Notes Comments']
+        for app in comment_list:
+            data[app].replace(float('NaN'), '', inplace=True)
+
+        for index in range(0, name.size):
             feedback = Feedback()
-            feedback.submitter = data['First L. Name'][i]
-            feedback.email = data['Email Address'][i]
-            feedback.score_hub = data['Hub Satisfaction'][i]
-            feedback.comment_hub = data['Hub Comments'][i]
-            feedback.score_calendar = data['Calendar Satisfaction'][i]
-            feedback.comment_calendar = data['Calendar Comments'][i]
-            feedback.score_contacts = data['Contacts Satisfaction'][i]
-            feedback.comment_contacts = data['Contacts Comments'][i]
-            feedback.score_tasks = data['Tasks Satisfaction'][i]
-            feedback.comment_tasks = data['Tasks Comments'][i]
-            feedback.score_notes = data['Notes Satisfaction'][i]
-            feedback.comment_notes = data['Notes Comments'][i]
+            feedback.submitter = data['First L. Name'][index]
+            feedback.email = data['Email Address'][index]
+            feedback.score_hub = data['Hub Satisfaction'][index]
+            feedback.comment_hub = data['Hub Comments'][index]
+            feedback.score_calendar = data['Calendar Satisfaction'][index]
+            feedback.comment_calendar = data['Calendar Comments'][index]
+            feedback.score_contacts = data['Contacts Satisfaction'][index]
+            feedback.comment_contacts = data['Contacts Comments'][index]
+            feedback.score_tasks = data['Tasks Satisfaction'][index]
+            feedback.comment_tasks = data['Tasks Comments'][index]
+            feedback.score_notes = data['Notes Satisfaction'][index]
+            feedback.comment_notes = data['Notes Comments'][index]
             feedback.save()
 
         print('name finished')
-
-        # for row in data['Email Address']:
-        #     feedback = Feedback()
-        #     feedback.email = row
-        #     feedback.save()
-        # print('email finished')
-
-        # count = 0
-        # for each_col in col:
-        #     each_col_data = data[each_col]
-        #     count += 1
-        #     for row in each_col_data:
-        #         if count == 1:
-        #             feedback = Feedback()
-        #             feedback.submitter = row
-        #             feedback.save()
-        #         elif count == 2:
-        #             feedback = Feedback()
-        #             feedback.email = row
-        #             feedback.save()
-        #     break
 
         if Fruit.objects.exists():
             print('Data already loaded...exiting.')
