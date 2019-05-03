@@ -33,7 +33,8 @@ urlpatterns = [
 
     url(r'^hub_detail/(\d+)/', views.hub_detail, name='hub_detail'),
 
-    url(r'^hub_score_0_5', views.hub_score_0_5, {'app': 'hub'}, name='hub_score_0_5'),
+    url(r'^hub_score_0_5', views.hub_score_0_5, name='hub_score_0_5'),
+    # url(r'^hub_score_0_5', views.hub_score_0_5, {'app': 'hub'}, name='hub_score_0_5'),
     url(r'^hub_score_6_8', views.hub_score_6_8, name='hub_score_6_8'),
     url(r'^hub_score_9_10', views.hub_score_9_10, name='hub_score_9_10'),
 

@@ -3,7 +3,7 @@
 
 {% for feedback in feedbacks %}
     {% if feedback.score_calendar <= 5 %}
-        <p> {{ feedback.comment_calendar }}</p>
+        <p> {{ feedback.comment_notes }}</p>
     {% endif %}
 {% endfor %}
 

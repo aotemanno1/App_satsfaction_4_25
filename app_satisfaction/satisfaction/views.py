@@ -15,7 +15,8 @@ def hub_list(request, app):
     cht_score = ScorePieChart()
     cht_score_hub = cht_score.generate('''%s''' % app)
     dict_score = {'cht_score_hub': cht_score_hub}
-    return render(request, 'hub_list.html', dict_score)
+    html_file = app + '_list.html'
+    return render(request, html_file, dict_score)
 
 
 def hub_detail(request, id):
@@ -23,9 +24,10 @@ def hub_detail(request, id):
     return render(request, 'hub_detail.html', {'feedback': feedback})
 
 
-def hub_score_0_5(request, app):
+def hub_score_0_5(request):
     feedbacks = Feedback.objects.all()
-    return render(request, 'hub_score_0_5.html', {'feedbacks': feedbacks, 'app': app})
+    # return render(request, 'hub_score_0_5.html', {'feedbacks': feedbacks, 'app': app})
+    return render(request, 'hub_score_0_5.html', {'feedbacks': feedbacks})
 
 
 def hub_score_6_8(request):
