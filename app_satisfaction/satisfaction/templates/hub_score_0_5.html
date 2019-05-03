@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!--{% for feedback in feedbacks %}-->
+<!--    {% if feedback.score_hub <= 5 %}-->
+<!--        <p> {{ feedback.comment_hub }}</p>-->
+<!--    {% endif %}-->
+<!--{% endfor %}-->
+
 {% for feedback in feedbacks %}
     {% if feedback.score_hub <= 5 %}
         <p> {{ feedback.comment_hub }}</p>

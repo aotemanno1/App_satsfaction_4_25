@@ -12,31 +12,10 @@ def home(request):
 
 
 def hub_list(request, app):
-    # app = '''hub'''
     cht_score = ScorePieChart()
     cht_score_hub = cht_score.generate('''%s''' % app)
     dict_score = {'cht_score_hub': cht_score_hub}
     return render(request, 'hub_list.html', dict_score)
-
-
-# def calendar_list(request, app):
-#     # app = '''calendar'''
-#     cht_score = ScorePieChart()
-#     cht_score_calendar = cht_score.generate('''%s''' % app)
-#     dict_score = {'cht_score_calendar': cht_score_calendar}
-#     return render(request, 'calendar_list.html', dict_score)
-
-
-def contacts_list(request):
-    pass
-
-
-def notes_list(request):
-    pass
-
-
-def tasks_list(request):
-    pass
 
 
 def hub_detail(request, id):
@@ -44,9 +23,9 @@ def hub_detail(request, id):
     return render(request, 'hub_detail.html', {'feedback': feedback})
 
 
-def hub_score_0_5(request):
+def hub_score_0_5(request, app):
     feedbacks = Feedback.objects.all()
-    return render(request, 'hub_score_0_5.html', {'feedbacks': feedbacks})
+    return render(request, 'hub_score_0_5.html', {'feedbacks': feedbacks, 'app': app})
 
 
 def hub_score_6_8(request):
