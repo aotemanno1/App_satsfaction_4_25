@@ -41,6 +41,11 @@ class ScorePieChart():
         self.chart = pygal.Pie(**kwargs)
         self.chart.title = 'Score Distribution'
 
+        self.height = 600
+        self.width = 800,
+        self.explicit_size = True,
+        self.style = 'DarkStyle'
+
     def get_data(self, app):
         conn = sqlite3.connect('db.sqlite3')
         c = conn.cursor()
@@ -52,7 +57,6 @@ class ScorePieChart():
         high = c.fetchall()[0][0]
         c.execute('''SELECT COUNT(id) FROM satisfaction_feedback WHERE score_%s == -1''' % app)
         others = c.fetchall()[0][0]
-
 
         data = {}
         data['0~5'] = int(low)
