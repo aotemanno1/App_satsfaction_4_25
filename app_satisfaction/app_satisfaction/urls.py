@@ -25,20 +25,20 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^$', views.home, name='home'),
 
-    url(r'^hub_list/', views.hub_list, name='hub_list'),
+    url(r'^hub_list/', views.hub_list, {'app': 'hub'}, name='hub_list'),
     url(r'^hub_detail/(\d+)/', views.hub_detail, name='hub_detail'),
     url(r'^hub_score_0_5', views.hub_score_0_5, name='hub_score_0_5'),
     url(r'^hub_score_6_8', views.hub_score_6_8, name='hub_score_6_8'),
     url(r'^hub_score_9_10', views.hub_score_9_10, name='hub_score_9_10'),
 
-    url(r'^calendar_list/', views.calendar_list, name='calendar_list'),
+    url(r'^calendar_list/', views.hub_list, {'app': 'calendar'}, name='calendar_list'),
     url(r'^calendar_score_0_5', views.calendar_score_0_5, name='calendar_score_0_5'),
     url(r'^calendar_score_6_8', views.calendar_score_6_8, name='calendar_score_6_8'),
     url(r'^calendar_score_9_10', views.calendar_score_9_10, name='calendar_score_9_10'),
 
-    url(r'^contacts_list/', views.contacts_list, name='contacts_list'),
-    url(r'^tasks_list/', views.tasks_list, name='tasks_list'),
-    url(r'^notes_list/', views.notes_list, name='notes_list'),
+    url(r'^contacts_list/', views.hub_list, {'app': 'contacts'}, name='contacts_list'),
+    url(r'^tasks_list/', views.hub_list, {'app': 'tasks'}, name='tasks_list'),
+    url(r'^notes_list/', views.hub_list, {'app': 'notes'}, name='notes_list'),
 
     url(r'^fruit', views.fruit, name='fruit'),
     url(r'^test', views.test, name='test'),

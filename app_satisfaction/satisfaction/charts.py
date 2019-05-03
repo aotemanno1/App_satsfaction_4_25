@@ -2,6 +2,8 @@
 
 import pygal
 import sqlite3
+from pygal.style import DarkStyle
+
 import os
 
 from .models import Fruit, Feedback
@@ -44,7 +46,8 @@ class ScorePieChart():
         self.height = 600
         self.width = 800,
         self.explicit_size = True,
-        self.style = 'DarkStyle'
+        # self.style = 'DarkStyle'
+        self.style = DarkStyle
 
     def get_data(self, app):
         conn = sqlite3.connect('db.sqlite3')

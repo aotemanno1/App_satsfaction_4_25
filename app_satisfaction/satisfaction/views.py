@@ -11,20 +11,20 @@ def home(request):
     return render(request, 'home.html')
 
 
-def hub_list(request):
-    app = '''hub'''
+def hub_list(request, app):
+    # app = '''hub'''
     cht_score = ScorePieChart()
     cht_score_hub = cht_score.generate('''%s''' % app)
     dict_score = {'cht_score_hub': cht_score_hub}
     return render(request, 'hub_list.html', dict_score)
 
 
-def calendar_list(request):
-    app = '''calendar'''
-    cht_score = ScorePieChart()
-    cht_score_calendar = cht_score.generate('''%s''' % app)
-    dict_score = {'cht_score_calendar': cht_score_calendar}
-    return render(request, 'calendar_list.html', dict_score)
+# def calendar_list(request, app):
+#     # app = '''calendar'''
+#     cht_score = ScorePieChart()
+#     cht_score_calendar = cht_score.generate('''%s''' % app)
+#     dict_score = {'cht_score_calendar': cht_score_calendar}
+#     return render(request, 'calendar_list.html', dict_score)
 
 
 def contacts_list(request):
